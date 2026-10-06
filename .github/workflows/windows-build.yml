@@ -1,0 +1,42 @@
+name: Windows game download
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '*.js'
+      - '*.cjs'
+      - '*.mjs'
+      - '*.html'
+      - '*.css'
+      - 'package*.json'
+      - '.github/workflows/windows-build.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Test game logic
+        run: npm test
+      - name: Build personal Windows executable
+        run: npm run dist:win -- --publish never
+      - name: Attach executable for download
+        uses: actions/upload-artifact@v4
+        with:
+          name: EXO-Industries-Windows
+          path: dist/EXO-Industries-*-Windows.exe
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6

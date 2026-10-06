@@ -1,0 +1,40 @@
+{
+  "name": "exo-industries",
+  "version": "0.2.0",
+  "description": "Personal incremental factory and space conquest game",
+  "main": "desktop.cjs",
+  "author": "EXO Industries",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron . --no-sandbox",
+    "test": "node --test engine.test.mjs",
+    "dist:win": "electron-builder --win portable --x64"
+  },
+  "devDependencies": {
+    "electron": "34.5.8",
+    "electron-builder": "26.0.12"
+  },
+  "build": {
+    "appId": "local.exo.industries",
+    "productName": "EXO Industries",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "style.css",
+      "app.js",
+      "engine.mjs",
+      "desktop.cjs",
+      "package.json"
+    ],
+    "win": {
+      "target": "portable",
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "EXO-Industries-${version}-Windows.exe"
+    },
+    "compression": "store"
+  }
+}
