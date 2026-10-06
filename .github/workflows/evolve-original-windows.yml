@@ -1,0 +1,72 @@
+name: Evolve Original Windows download
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'evolve-desktop/**'
+      - 'scripts/prepare-evolve.cjs'
+      - 'scripts/evolve-*.cjs'
+      - 'package*.json'
+      - '.github/workflows/evolve-original-windows.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked desktop dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Prepare offline original assets
+        run: npm run prepare:evolve
+      - name: Verify original code and library integrity
+        run: npm run test:evolve
+      - name: Build Windows portable executable
+        run: npm run dist:evolve:win
+      - name: Test the actual Windows app
+        shell: pwsh
+        run: |
+          $env:EVOLVE_EXECUTABLE = (Resolve-Path 'evolve-desktop/dist/win-unpacked/Evolve Original Desktop.exe').Path
+          npm run smoke:evolve
+          if ($LASTEXITCODE -ne 0) { throw 'Original Evolve desktop smoke test failed' }
+      - name: Include original license and source notice
+        shell: pwsh
+        run: |
+          Copy-Item evolve-desktop/UPSTREAM-NOTICE.md evolve-desktop/dist/UPSTREAM-NOTICE.md
+          Copy-Item evolve-desktop/upstream/LICENSE evolve-desktop/dist/LICENSE.txt
+      - name: Download original Evolve for Windows
+        uses: actions/upload-artifact@v4
+        with:
+          name: Evolve-Original-Windows
+          path: |
+            evolve-desktop/dist/Evolve-Original-1.4.10-Windows.exe
+            evolve-desktop/dist/UPSTREAM-NOTICE.md
+            evolve-desktop/dist/LICENSE.txt
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6
+      - name: Download the corresponding original source
+        uses: actions/upload-artifact@v4
+        with:
+          name: Evolve-Original-Source
+          path: evolve-desktop/upstream/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+      - name: Test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Evolve-Desktop-Test-Results
+          path: evolve-desktop/test-results/
+          if-no-files-found: ignore
+          retention-days: 30

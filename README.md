@@ -1,3 +1,13 @@
+# 현재 다운로드: 원본 Evolve 데스크톱 버전
+
+원본 웹게임을 그대로 실행하려면 **[Evolve Original Desktop 안내](evolve-desktop/README.md)**를 확인하세요.
+
+- [원본 Evolve Windows 빌드](https://github.com/kingjow363-stack/game/actions/workflows/evolve-original-windows.yml) → **Evolve-Original-Windows**
+- 실행 파일: **Evolve-Original-1.4.10-Windows.exe**
+- 아래 EXO Industries는 이전에 별도로 만들었던 게임이며 보존되어 있습니다.
+
+---
+
 # EXO Industries
 
 개인용 싱글 플레이 증분 전략 게임의 프로토타입입니다. Evolve에서 영감을 받은 단계별 발전을 바탕으로 독자적인 산업·정복 흐름을 구성했습니다.

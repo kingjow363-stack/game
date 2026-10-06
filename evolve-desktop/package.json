@@ -1,0 +1,19 @@
+{
+  "name": "evolve-original-desktop",
+  "version": "1.4.10",
+  "private": true,
+  "description": "Unofficial personal desktop package of the original Evolve Idle game",
+  "main": "main.cjs",
+  "author": "Personal desktop wrapper; Evolve by Peter Motschmann and contributors",
+  "license": "MPL-2.0",
+  "build": {
+    "appId": "local.evolve.original.desktop",
+    "productName": "Evolve Original Desktop",
+    "electronVersion": "34.5.8",
+    "directories": { "output": "dist" },
+    "files": ["main.cjs", "assets.cjs", "package.json", "web/**/*", "UPSTREAM-NOTICE.md"],
+    "compression": "store",
+    "win": { "target": "portable", "signAndEditExecutable": false },
+    "portable": { "artifactName": "Evolve-Original-1.4.10-Windows.exe" }
+  }
+}

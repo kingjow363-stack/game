@@ -1,0 +1,2 @@
+# Keep upstream bytes identical on Windows and Linux for integrity verification.
+evolve-desktop/upstream/** -text

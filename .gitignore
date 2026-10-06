@@ -1,3 +1,6 @@
 node_modules/
 dist/
 *.log
+evolve-desktop/web/
+evolve-desktop/dist/
+evolve-desktop/test-results/
