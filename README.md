@@ -15,6 +15,15 @@
 
 ## Windows 실행 파일
 
+GitHub에서 다운로드하려면:
+
+1. [Windows game download](https://github.com/kingjow363-stack/game/actions/workflows/windows-build.yml)를 엽니다.
+2. 초록색 체크가 표시된 최신 실행을 선택합니다.
+3. 페이지 아래 **Artifacts → EXO-Industries-Windows**를 클릭합니다. 다운로드하려면 GitHub 로그인이 필요합니다.
+4. 받은 ZIP 파일을 풀고 안의 `.exe`를 실행합니다.
+
+빌드 파일은 30일 동안 보관됩니다. 만료된 경우 Actions에서 **Run workflow**로 다시 만들 수 있습니다.
+
 `dist/EXO-Industries-0.2.0-Windows.exe`를 실행합니다. 별도 서버나 인터넷 연결은 필요 없습니다. 개인용 미서명 실행 파일입니다.
 
 저장 데이터는 Windows의 `%APPDATA%/exo-industries/` 아래 Electron 사용자 데이터에 보관됩니다. EXE를 이동해도 같은 Windows 사용자라면 저장 데이터를 유지합니다. 앱 안의 ‘진행 초기화’는 영구 기록까지 삭제합니다.
