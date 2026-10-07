@@ -1,10 +1,11 @@
-# 현재 다운로드: 원본 Evolve 데스크톱 버전
+# 현재 다운로드: Evolve 우주 산업 확장 r2
 
-원본 웹게임을 그대로 실행하려면 **[Evolve Original Desktop 안내](evolve-desktop/README.md)**를 확인하세요.
+**[Evolve Industry Desktop 안내](evolve-desktop/README.md)**를 확인하세요.
 
-- [원본 Evolve Windows 빌드](https://github.com/kingjow363-stack/game/actions/workflows/evolve-original-windows.yml) → **Evolve-Original-Windows**
-- 실행 파일: **Evolve-1.4.10-Desktop-r1-Windows.exe**
-- 이번 변경: 원본 진행 구조를 유지하고 자동 백업·복구를 보강했습니다. [후반 산업 확장 계획](evolve-desktop/ROADMAP.md)
+- [Windows 빌드](https://github.com/kingjow363-stack/game/actions/workflows/evolve-original-windows.yml) → **Evolve-Industry-Windows**
+- 실행 파일: **Evolve-1.4.10-Industry-r2-Windows.exe**
+- 원본 초중반 진행 + 우주 자동화·생산 승수·행성/항성계 산업망·계승 강화 + 백업/복구
+- 화면 오른쪽 아래 **우주 산업** 버튼에서 확인합니다. [사용법과 적용 범위](evolve-desktop/INDUSTRY.md)
 - 아래 EXO Industries는 이전에 별도로 만들었던 게임이며 보존되어 있습니다.
 
 ---

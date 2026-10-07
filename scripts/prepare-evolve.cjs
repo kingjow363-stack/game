@@ -66,3 +66,5 @@ for (const htmlName of ['index.html', 'wiki.html', 'save.html']) {
 }
 fs.writeFileSync(path.join(web, 'vendor', 'NOTICES.json'), JSON.stringify(notices, null, 2));
 console.log(`Prepared original Evolve ${manifest.version}: ${Object.keys(manifest.files).length} upstream files verified; all 6 scripts match upstream SRI.`);
+
+require('./build-evolve-mod.cjs');

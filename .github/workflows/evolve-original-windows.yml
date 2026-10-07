@@ -1,4 +1,4 @@
-name: Evolve Original Windows download
+name: Evolve Industry Windows download
 
 on:
   workflow_dispatch:
@@ -7,7 +7,8 @@ on:
     paths:
       - 'evolve-desktop/**'
       - 'scripts/prepare-evolve.cjs'
-      - 'scripts/evolve-*.cjs'
+      - 'scripts/build-evolve-mod.cjs'
+      - 'scripts/evolve-*'
       - 'package*.json'
       - '.github/workflows/evolve-original-windows.yml'
 
@@ -37,7 +38,9 @@ jobs:
         run: |
           $env:EVOLVE_EXECUTABLE = (Resolve-Path 'evolve-desktop/dist/win-unpacked/Evolve Original Desktop.exe').Path
           npm run smoke:evolve
-          if ($LASTEXITCODE -ne 0) { throw 'Original Evolve desktop smoke test failed' }
+          if ($LASTEXITCODE -ne 0) { throw 'Evolve desktop save smoke test failed' }
+          npm run smoke:industry
+          if ($LASTEXITCODE -ne 0) { throw 'Evolve industry smoke test failed' }
       - name: Include original license and source notice
         shell: pwsh
         run: |
@@ -46,9 +49,9 @@ jobs:
       - name: Download original Evolve for Windows
         uses: actions/upload-artifact@v4
         with:
-          name: Evolve-Original-Windows
+          name: Evolve-Industry-Windows
           path: |
-            evolve-desktop/dist/Evolve-1.4.10-Desktop-r1-Windows.exe
+            evolve-desktop/dist/Evolve-1.4.10-Industry-r2-Windows.exe
             evolve-desktop/dist/UPSTREAM-NOTICE.md
             evolve-desktop/dist/LICENSE.txt
           if-no-files-found: error
@@ -60,6 +63,19 @@ jobs:
           name: Evolve-Original-Source
           path: evolve-desktop/upstream/
           include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+      - name: Download the modified game source
+        uses: actions/upload-artifact@v4
+        with:
+          name: Evolve-Industry-Source
+          path: |
+            evolve-desktop/build-source/
+            evolve-desktop/mods/
+            scripts/build-evolve-mod.cjs
+            scripts/prepare-evolve.cjs
+            package.json
+            package-lock.json
           if-no-files-found: error
           retention-days: 30
       - name: Test evidence

@@ -11,10 +11,15 @@ const hash = file => crypto.createHash('sha256').update(fs.readFileSync(file)).d
 test('every vendored upstream file matches the pinned original source', () => {
   for (const [file, expected] of Object.entries(manifest.files)) assert.equal(hash(path.join(app, 'upstream', file)), expected, file);
 });
-test('runtime game, worker, CSS, wiki and all translations are byte-identical to upstream', () => {
+test('original worker, CSS, wiki and translations remain identical; game bundle is explicitly rebuilt', () => {
   for (const [file, expected] of Object.entries(manifest.files)) {
-    if (/^(evolve|wiki|strings|lib|font)\//.test(file)) assert.equal(hash(path.join(app, 'web', file)), expected, file);
+    if (file !== 'evolve/main.js' && /^(evolve|wiki|strings|lib|font)\//.test(file)) assert.equal(hash(path.join(app, 'web', file)), expected, file);
   }
+});
+test('modified source and industry UI are present in the build', () => {
+  assert.notEqual(hash(path.join(app,'web/evolve/main.js')),manifest.files['evolve/main.js']);
+  assert.ok(fs.existsSync(path.join(app,'build-source/src/industry-core.mjs')));
+  assert.ok(fs.existsSync(path.join(app,'web/industry.css')));
 });
 test('offline HTML scripts retain their original integrity hashes and resolve locally', () => {
   for (const file of ['index.html', 'wiki.html', 'save.html']) {

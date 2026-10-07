@@ -27,7 +27,7 @@ async function backup(win, live = false) {
     win.webContents.session.flushStorageData();
     backupStatus = `마지막 파일 백업: ${new Date().toLocaleString()}`;
     backupFailed = false;
-    win.setTitle('Evolve 1.4.10 — Desktop · 저장 안정화 1차');
+    win.setTitle('Evolve 1.4.10 — Desktop · 우주 산업 확장 r2');
   } catch (error) {
     backupFailed = true; backupStatus = `파일 백업 실패: ${error.message}`;
     if (!win.isDestroyed()) win.setTitle('Evolve — 백업 실패 · 게임 메뉴에서 저장 상태 확인');
@@ -80,7 +80,7 @@ function external(url) {
 }
 function createWindow(url, isGame = false) {
   const win = new BrowserWindow({ width: 1440, height: 960, minWidth: 800, minHeight: 600,
-    backgroundColor: '#1b1b1b', title: isGame ? 'Evolve 1.4.10 — Desktop · 저장 안정화 1차' : 'Evolve Wiki',
+    backgroundColor: '#1b1b1b', title: isGame ? 'Evolve 1.4.10 — Desktop · 우주 산업 확장 r2' : 'Evolve Wiki',
     webPreferences: { nodeIntegration: false, contextIsolation: true, sandbox: true, backgroundThrottling: false },
   });
   win.webContents.setWindowOpenHandler(({ url }) => {
@@ -145,7 +145,7 @@ function setupMenu() {
     { label: '보기', submenu: [{ role: 'reload', label: '새로고침' }, { role: 'resetZoom', label: '기본 크기' }, { role: 'zoomIn', label: '확대' }, { role: 'zoomOut', label: '축소' }, { role: 'togglefullscreen', label: '전체 화면' }] },
     { label: '도움말', submenu: [
       { label: '원본 소스와 라이선스', click: () => external(SOURCE_URL) },
-      { label: '이 실행 파일 정보', click: () => void dialog.showMessageBox({ type: 'info', title: 'Evolve Original Desktop', message: 'Evolve Idle 1.4.10 · 개인용 비공식 데스크톱 패키지', detail: '게임 제작: Peter Motschmann 및 Evolve 기여자\n라이선스: MPL-2.0\n원본 게임 로직과 저장 형식을 그대로 사용합니다.\n외부 라이브러리·위키는 앱에 포함됩니다.\nEXO Industries 저장과는 별개입니다.\n\n소스: ' + SOURCE_URL }) },
+      { label: '이 실행 파일 정보', click: () => void dialog.showMessageBox({ type: 'info', title: 'Evolve Original Desktop', message: 'Evolve Idle 1.4.10 · Industry r2 · 개인용 확장', detail: '게임 제작: Peter Motschmann 및 Evolve 기여자\n라이선스: MPL-2.0\n원본 초중반 진행에 우주 산업·자동화·계승 시스템을 추가했습니다.\n외부 라이브러리·위키는 앱에 포함됩니다.\nEXO Industries 저장과는 별개입니다.\n\n소스: ' + SOURCE_URL }) },
     ] },
   ]));
 }

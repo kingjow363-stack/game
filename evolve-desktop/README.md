@@ -1,49 +1,40 @@
-# Evolve Original Desktop
+# Evolve Industry Desktop r2
 
-공식 Evolve Idle 1.4.10을 그대로 실행하는 개인용 Windows 데스크톱 패키지입니다. EXO Industries와는 별개이며, 첫 화면에는 원본대로 **Prehistoric / Protoplasm / RNA**가 표시됩니다.
+공식 Evolve Idle 1.4.10에 **우주 자동화·생산 승수·지역/태양계/성간 산업망·문명 계승**을 추가한 개인용 Windows 수정판입니다. 초기 진화와 문명 발전은 원본 구조를 유지합니다. 이전 저장 안정화 r1도 포함합니다.
 
-## 다운로드와 시작
+## 다운로드
 
-[전용 Windows 빌드 페이지](https://github.com/kingjow363-stack/game/actions/workflows/evolve-original-windows.yml)에서 초록색 체크가 있는 실행을 선택하고, **Artifacts → Evolve-Original-Windows**를 다운로드하세요. ZIP을 풀어 **Evolve-1.4.10-Desktop-r1-Windows.exe**를 실행합니다. EXO-Industries 파일은 이전에 만들었던 별도 게임입니다.
+[Windows 빌드 페이지](https://github.com/kingjow363-stack/game/actions/workflows/evolve-original-windows.yml)에서 초록색 체크가 있는 최신 실행을 선택하세요. GitHub 로그인 후 **Artifacts → Evolve-Industry-Windows**를 다운로드하고, ZIP을 풀어 **Evolve-1.4.10-Industry-r2-Windows.exe**를 실행합니다.
 
-처음 실행할 때 영어로 보이면 게임의 **Settings → Locale → 한국어**를 선택하세요. 원본의 첫 시작 설정을 임의로 바꾸지 않았습니다.
+이전 EXE를 먼저 종료하세요. 기존 `evolve-original-desktop` 저장 폴더를 그대로 사용합니다. `EXO-Industries`는 과거의 별도 게임이며 저장이 호환되지 않습니다.
 
-## 웹게임의 기존 저장 가져오기
+영어로 시작하면 원본 **Settings → Locale → 한국어**를 선택하세요. 화면 오른쪽 아래 **우주 산업** 버튼에서 새 기능을 확인할 수 있습니다. 우주 진입 전에는 해금 안내가 표시됩니다.
 
-1. 웹 Evolve의 Settings에서 **Export Game**을 눌러 저장 문자열을 복사합니다.
-2. 데스크톱 Evolve의 Settings에 있는 **Import/Export Save** 입력란에 붙여넣습니다.
-3. **Import Game**을 누르면 원본 가져오기 기능이 그대로 실행됩니다.
+- [새 기능 사용법·목표·승수·환생 보상](INDUSTRY.md)
+- [실제 수정 파일과 구현 구조](ROADMAP.md)
 
-EXO 저장 JSON은 Evolve 저장과 구조가 달라 가져올 수 없습니다. 새 브라우저/앱은 별도 저장이므로 웹게임 저장을 자동으로 읽지는 않습니다.
+## 기존 웹 저장 가져오기
 
-저장 위치는 `%APPDATA%/evolve-original-desktop`입니다. 원본 자동저장에 더해 30초마다 `last-save.txt`와 `backups/`에 최근 10개 파일 백업을 보관합니다. 정상 종료 시에도 현재 상태를 반영합니다. 원본이 저장을 제한하는 구간에서는 마지막 안전한 저장을 유지합니다. 상단 메뉴 **게임 → 저장 폴더 열기**에서 찾을 수 있습니다. 여러 창에서 저장을 덮어쓰지 않도록 게임 앱은 하나만 실행됩니다.
+웹 Evolve에서 **Export Game**으로 저장 문자열을 복사한 뒤, 앱의 Settings → Import/Export Save에 붙여넣고 **Import Game**을 누르세요. 원본 저장 형식을 사용하며 확장 상태만 별도 이름 공간에 추가합니다. 기준 버전은 고정된 1.4.10이며, 그 이후 웹 버전의 모든 저장 구조를 보증하지는 않습니다.
 
-## 저장 안정화 1차 (Desktop r1)
+## 저장·백업
 
-- **게임 → 지금 파일 백업 / 저장 상태 확인 / 백업 파일 복구** 메뉴를 추가했습니다.
-- 저장이 손상되거나 누락되면 게임을 시작하기 전에 복구를 안내합니다. 정상 백업을 선택하거나, 종료하거나, 새 게임을 시작할 수 있습니다.
-- 복구 전 데이터는 `before-recovery-*.json`으로 별도 보관합니다. 이 파일은 자동 삭제하지 않습니다. 정상 백업 TXT는 원본 Import Game에도 사용할 수 있습니다.
-- 파일 백업 실패는 창 제목에 표시됩니다. 종료할 때 실패하면 계속 플레이할 수 있습니다.
-- 강제 종료 시 마지막 저장 이후의 진행은 잃을 수 있습니다. 백업은 같은 기기에 보관하므로 기기 전체 고장까지 보호하지는 않습니다.
+저장 위치: `%APPDATA%/evolve-original-desktop`. **게임 → 저장 폴더 열기**로 이동할 수 있습니다.
 
-이번 실행 파일의 이름에는 **Desktop-r1**이 들어갑니다. 게임 버전은 그대로 1.4.10이며 이전 EXE와 저장 폴더를 공유합니다. 종료한 뒤 새 EXE로 실행하면 됩니다.
+원본 자동저장 외에 30초마다 `last-save.txt`와 `backups/`에 최근 10개의 파일 백업을 보관합니다. 정상 종료 시에도 저장합니다. 원본이 저장을 제한하는 구간에서는 마지막 안전한 저장을 유지합니다.
 
-후반 자동화·승수·산업력·Prestige의 코드 분석과 단계별 계획은 [ROADMAP.md](ROADMAP.md)를 확인하세요. 이번에는 저장 안정화까지만 적용했습니다.
+**게임 → 지금 파일 백업 / 저장 상태 확인 / 백업 파일 복구**를 사용할 수 있습니다. 시작할 때 저장이 손상되거나 누락되면 복구를 안내합니다. 복구 전 데이터는 `before-recovery-*.json`에 별도로 보관하며 자동 삭제하지 않습니다. 백업 TXT는 원본 가져오기 형식입니다. 강제 종료 시 마지막 저장 이후 진행은 잃을 수 있으며, 같은 디스크의 백업이므로 기기 전체 고장까지 보호하지는 않습니다.
 
-## 원본과의 관계
+## 원본 보존과 수정 빌드
 
-- 기준 원본 커밋: `3436358dcd03d9f9e071d51ea071e0a78c0322e4` (공식 저장소 master, package version 1.4.10).
-- `upstream/`에는 해당 커밋의 소스 113개를 그대로 보관합니다. 소스뿐 아니라 원본의 빌드된 게임 코드, 위키, CSS, Web Worker, 번역을 사용합니다.
-- `upstream-manifest.json`은 모든 원본 파일의 SHA-256을 기록합니다. 패키징 전에 원본이 임의로 바뀌지 않았는지 검사합니다.
-- 원본 HTML의 CDN 라이브러리 6개는 정확히 같은 버전을 로컬 파일로 교체하고, 원본 HTML의 SHA-384 무결성 값으로 검증합니다. 검증을 끄지 않습니다.
-- Lato 글꼴과 라이브러리는 앱에 포함됩니다. 게임 동작에는 인터넷 연결이 필요 없습니다. 원본 위키도 별도 창으로 열립니다.
-- 게임 로직·밸런스·종족·연구·우주·환생은 원본 파일 그대로입니다. 데스크톱 창, 자동 백업·복구, 오프라인 파일 경로만 추가했습니다.
-- 외부 분석 스크립트와 온라인 버전 확인은 동작하지 않습니다. 커뮤니티/후원 링크를 직접 누르면 기본 브라우저로 열립니다.
-- 웹사이트가 나중에 바뀌어도 이 EXE는 고정된 1.4.10을 유지합니다. 모든 장기 플레이 경로를 끝까지 검증했다는 뜻은 아닙니다.
+- 원본 기준 커밋: `3436358dcd03d9f9e071d51ea071e0a78c0322e4`, 버전 1.4.10.
+- `upstream/`의 원본 113개와 `upstream-manifest.json` 해시는 보존합니다.
+- `mods/`에 산업 모듈/UI를 두고, `scripts/build-evolve-mod.cjs`가 복사본에 검증된 패치를 적용합니다. `build-source/`는 실제 수정 소스와 `PATCHES.json`을 포함하는 생성물입니다.
+- 수정 게임 번들은 원본과 같은 esbuild 0.25.0으로 빌드합니다. 원본 위키·번역·Web Worker·기존 CSS는 그대로이고 산업 패널 CSS를 추가합니다.
+- 오프라인 라이브러리 6개는 원본과 같은 버전/SRI로 검증합니다. 인터넷 연결 없이 게임과 원본 위키를 사용할 수 있습니다. 위키는 원본 기준이므로 추가 시스템 설명은 산업 패널과 `INDUSTRY.md`에 있습니다.
+- 원본 제작자: Peter Motschmann 및 기여자. [수정 고지](UPSTREAM-NOTICE.md), [MPL-2.0](upstream/LICENSE). Windows 빌드에 원본 소스와 수정 소스 다운로드를 각각 제공합니다.
 
-원본 제작자와 라이선스: [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md), [Mozilla Public License 2.0](upstream/LICENSE). Windows 빌드에는 원본 소스 다운로드도 함께 제공합니다.
-
-## 개발과 향후 수정
+## 개발·검증
 
 저장소 루트에서:
 
@@ -52,9 +43,9 @@ npm ci
 npm run prepare:evolve
 npm run test:evolve
 npm run start:evolve
+npm run smoke:evolve
+npm run smoke:industry
 npm run dist:evolve:win
 ```
 
-원본 보존 폴더 `upstream/`와 데스크톱 연결부 `main.cjs`를 구분했습니다. 향후 게임 규칙을 바꿀 때는 원본 기준 커밋과 차이를 기록하고, 수정한 소스를 빌드한 다음 별도 패치/작업용 소스 빌드 경로를 사용합니다. 원본 기준 파일과 해시는 보존합니다. 생성물인 `web/`만 수정하면 다음 준비 작업에서 덮어써집니다.
-
-검증 명령 `npm run smoke:evolve`는 테스트 전용 저장 폴더를 사용하며 RNA/DNA 생산, 원형질 진화 구매, 자동 생산, 한국어, 원본 저장 가져오기/내보내기, 위키, 앱 재시작을 확인합니다. Linux에서는 가상 화면 등이 필요합니다. Windows CI는 패키징된 Windows 앱으로 같은 테스트를 실행합니다.
+Linux 기능 검사는 가상 화면이 필요합니다. Windows CI는 패키징된 앱으로 저장/복구 검사를 수행하고, 같은 수정 소스의 실제 원본 함수 및 산업 UI를 별도 테스트 하네스로 검증합니다. 하네스는 테스트 때만 주입하며 EXE에는 포함하지 않습니다. 모든 종족·후반 루트를 장시간 플레이한 검증과는 구분합니다.
