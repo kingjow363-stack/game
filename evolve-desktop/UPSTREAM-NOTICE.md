@@ -13,7 +13,7 @@ A separate Evolve-Original-Source download also accompanies the Windows build.
 The original license notices are preserved in upstream/LICENSE and web/LICENSE.
 
 Desktop adaptation: local copies of the exact CDN library versions, an offline
-Lato font, an Electron window, stable local save storage, and local wiki windows.
+Lato font, an Electron window, stable local save storage, periodic atomic backups, recovery controls, and local wiki windows.
 The original game scripts, CSS, worker, balance, text and game-save format are
 unchanged. Generated HTML replaces external dependency URLs and removes the
 external Google Analytics loader. No game mechanics are replaced with EXO code.

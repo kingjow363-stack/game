@@ -11,9 +11,9 @@
     "productName": "Evolve Original Desktop",
     "electronVersion": "34.5.8",
     "directories": { "output": "dist" },
-    "files": ["main.cjs", "assets.cjs", "package.json", "web/**/*", "UPSTREAM-NOTICE.md"],
+    "files": ["main.cjs", "assets.cjs", "saves.cjs", "recovery.cjs", "package.json", "web/**/*", "UPSTREAM-NOTICE.md"],
     "compression": "store",
     "win": { "target": "portable", "signAndEditExecutable": false },
-    "portable": { "artifactName": "Evolve-Original-1.4.10-Windows.exe" }
+    "portable": { "artifactName": "Evolve-1.4.10-Desktop-r1-Windows.exe" }
   }
 }

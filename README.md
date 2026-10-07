@@ -3,7 +3,8 @@
 원본 웹게임을 그대로 실행하려면 **[Evolve Original Desktop 안내](evolve-desktop/README.md)**를 확인하세요.
 
 - [원본 Evolve Windows 빌드](https://github.com/kingjow363-stack/game/actions/workflows/evolve-original-windows.yml) → **Evolve-Original-Windows**
-- 실행 파일: **Evolve-Original-1.4.10-Windows.exe**
+- 실행 파일: **Evolve-1.4.10-Desktop-r1-Windows.exe**
+- 이번 변경: 원본 진행 구조를 유지하고 자동 백업·복구를 보강했습니다. [후반 산업 확장 계획](evolve-desktop/ROADMAP.md)
 - 아래 EXO Industries는 이전에 별도로 만들었던 게임이며 보존되어 있습니다.
 
 ---

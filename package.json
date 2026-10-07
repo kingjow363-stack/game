@@ -11,7 +11,7 @@
     "dist:win": "electron-builder --win portable --x64",
     "prepare:evolve": "node scripts/prepare-evolve.cjs",
     "start:evolve": "npm run prepare:evolve && electron evolve-desktop",
-    "test:evolve": "node --test scripts/evolve-assets.test.cjs",
+    "test:evolve": "node --test scripts/evolve-assets.test.cjs scripts/evolve-saves.test.cjs",
     "smoke:evolve": "node scripts/evolve-smoke.cjs",
     "dist:evolve:win": "npm run prepare:evolve && electron-builder --projectDir evolve-desktop --win portable --x64 --publish never"
   },

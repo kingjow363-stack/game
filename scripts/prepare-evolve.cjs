@@ -7,7 +7,7 @@ const upstream = path.join(app, 'upstream');
 const web = path.join(app, 'web');
 const manifest = require(path.join(app, 'upstream-manifest.json'));
 
-// Refuse accidental upstream drift; later intentional mods can update the recorded baseline.
+// Preserve the pinned baseline. Future gameplay mods must use a separate patch/build stage.
 for (const [file, expected] of Object.entries(manifest.files)) {
   const actual = crypto.createHash('sha256').update(fs.readFileSync(path.join(upstream, file))).digest('hex');
   if (actual !== expected) throw new Error(`Original Evolve file changed: ${file}`);
@@ -17,6 +17,7 @@ fs.mkdirSync(web, { recursive: true });
 for (const name of ['evolve', 'wiki', 'lib', 'font', 'strings', 'index.html', 'wiki.html', 'save.html', 'package.json', 'LICENSE', 'evolved.ico', 'evolved-light.ico']) {
   fs.cpSync(path.join(upstream, name), path.join(web, name), { recursive: true });
 }
+fs.copyFileSync(path.join(app, 'desktop-start.html'), path.join(web, 'desktop-start.html'));
 const libraries = {
   'jquery@3.6.3/dist/jquery.min.js': 'jquery/dist/jquery.min.js',
   'vue@2.7.14/dist/vue.min.js': 'vue/dist/vue.min.js',

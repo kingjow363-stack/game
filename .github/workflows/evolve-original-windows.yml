@@ -28,7 +28,7 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Prepare offline original assets
         run: npm run prepare:evolve
-      - name: Verify original code and library integrity
+      - name: Verify original integrity and save recovery
         run: npm run test:evolve
       - name: Build Windows portable executable
         run: npm run dist:evolve:win
@@ -48,7 +48,7 @@ jobs:
         with:
           name: Evolve-Original-Windows
           path: |
-            evolve-desktop/dist/Evolve-Original-1.4.10-Windows.exe
+            evolve-desktop/dist/Evolve-1.4.10-Desktop-r1-Windows.exe
             evolve-desktop/dist/UPSTREAM-NOTICE.md
             evolve-desktop/dist/LICENSE.txt
           if-no-files-found: error
